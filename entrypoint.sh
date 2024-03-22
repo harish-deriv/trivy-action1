@@ -189,10 +189,10 @@ if [ "${format}" == "sarif" ] && [ "${limitSeveritiesForSARIF}" != "true" ]; the
   echo "Building SARIF report with options: ${SARIF_ARGS}" "${artifactRef}"
   trivy --quiet ${scanType} --format sarif --output ${output} $SARIF_ARGS ${artifactRef}
 elif [ $trivyConfig ]; then
-   echo "Running Trivy with trivy.yaml config from: " $trivyConfig
+   echo "TEST Running Trivy with trivy.yaml config from: " $trivyConfig
    trivy --config $trivyConfig ${scanType} ${artifactRef}
 else
-   echo "Running trivy with options: trivy ${scanType} ${ARGS}" "${artifactRef}"
+   echo "TESTING Running trivy with options: trivy ${scanType} ${ARGS}" "${artifactRef}"
    echo "Global options: " "${GLOBAL_ARGS}"
    trivy $GLOBAL_ARGS ${scanType} ${ARGS} ${artifactRef}
 fi
