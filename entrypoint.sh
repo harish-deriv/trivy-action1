@@ -101,7 +101,8 @@ SARIF_ARGS=""
 ARGS=""
 format=$(echo $format | xargs)
 if [ $format ];then
- ARGS="$ARGS --format $format"
+ # ARGS="$ARGS --format $format"
+ ARGS="$ARGS --report summary"
 fi
 if [ $template ] ;then
  ARGS="$ARGS --template $template"
@@ -193,7 +194,7 @@ elif [ $trivyConfig ]; then
 else
    echo "Running trivy with options: trivy ${scanType} ${ARGS}" "${artifactRef}"
    echo "Global options: " "${GLOBAL_ARGS}"
-   trivy $GLOBAL_ARGS --report summary ${scanType} ${ARGS} ${artifactRef}
+   trivy $GLOBAL_ARGS ${scanType} ${ARGS} ${artifactRef}
 fi
 returnCode=$?
 
