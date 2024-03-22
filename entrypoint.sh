@@ -193,7 +193,7 @@ elif [ $trivyConfig ]; then
 else
    echo "Running trivy with options: trivy ${scanType} ${ARGS}" "${artifactRef}"
    echo "Global options: " "${GLOBAL_ARGS}"
-   trivy $GLOBAL_ARGS ${scanType} ${ARGS} ${artifactRef}
+   trivy $GLOBAL_ARGS --report summary ${scanType} ${ARGS} ${artifactRef}
 fi
 returnCode=$?
 
